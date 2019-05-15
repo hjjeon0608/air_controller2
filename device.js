@@ -78,11 +78,12 @@ class Device extends EventEmitter {
       //this.ref.on('power', power => {
       //  this.stats.power = power;
       //});
-      this.stats.power = await this.ref.power();
-      if( this.stats.power == on ) {
-        this.poll().then();
-      }
+      //this.stats.power = await this.ref.power();
+      //if( this.stats.power == on ) {
+      //this.poll().then();
+      //}
     }
+    this.poll().then();
 
     return true;
   }
