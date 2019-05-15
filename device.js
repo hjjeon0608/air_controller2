@@ -103,7 +103,12 @@ class Device extends EventEmitter {
           case 'temperature':
           case 'humidity':
           case 'led':
+
+      	  this.stats.power = await this.ref.power();
+
+      	  if( this.stats.power == true ) {
           promises.push(update(feature));
+          }
           break;
         }
       }
