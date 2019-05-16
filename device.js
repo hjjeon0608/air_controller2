@@ -82,8 +82,9 @@ class Device extends EventEmitter {
       //if( this.stats.power == on ) {
       //this.poll().then();
       //}
+      this.poll().then();//처음 실행시 한번 실행 시키기 위한 if문 안에 있는 것으로 보임
     }
-    this.poll().then();
+    
 
     return true;
   }
