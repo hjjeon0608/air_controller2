@@ -152,17 +152,14 @@ class Device extends EventEmitter {
       break;
     }
 
-    this.stats.power = await this.ref.power();
-    
-    if( this.stats.power == true ) {
-      if (fn !== undefined) {
-        // pass with favorite levels because of slow updates
-        if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
-          console.info(String(new Date), 'updating', feature, 'to', ...args);
-        }
-        await fn.bind(this)(...args);
+  
+    if (fn !== undefined) {
+      // pass with favorite levels because of slow updates
+      if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
+        console.info(String(new Date), 'updating', feature, 'to', ...args);
       }
-    }
+      await fn.bind(this)(...args);
+    }   
   }
 
   async setPower(on) {
@@ -183,8 +180,14 @@ class Device extends EventEmitter {
     await this.ref.setMode(mode);
     this.stats.mode = mode;
     if (level !== null) {
-      await this.ref.setFavoriteLevel(level);
-      this.stats.favoriteLevel = level;
+      this.stats.power = await this.ref.power();
+      if( this.stats.power == true ) {
+        await this.ref.setFavoriteLevel(level);
+        this.stats.favoriteLevel = level;
+      }
+      else {
+        return false;
+      }
     }
 
     return true;
