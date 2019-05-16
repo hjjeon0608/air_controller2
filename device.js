@@ -108,7 +108,7 @@ class Device extends EventEmitter {
       	  this.stats.power = await this.ref.power();
 
       	  if( this.stats.power == true ) {
-          promises.push(update(feature));
+            promises.push(update(feature));
           }
           break;
         }
