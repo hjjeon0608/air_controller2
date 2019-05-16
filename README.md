@@ -1,6 +1,8 @@
 # 원본 주소
 https://github.com/ssut/make-mi-air-purifier-great-again
 
+# 아래 내용은 원본 페이지를 그대로 가져온 것임. 가져온 이후 수정 작업을 거쳤으므로 본 repository의 내용이 아래 내용과 일치하지 않을 수 있음
+
 # MAKE MI AIR PURIFIER GREAT AGAIN
 
 ![](https://i.imgur.com/xX2nuH3.png)
