@@ -144,7 +144,7 @@ class Device extends EventEmitter {
       break;
 
       case 'power':
-      fn = this.setPower;
+      //fn = this.setPower;
       break;
 
       case 'led':
