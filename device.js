@@ -152,12 +152,16 @@ class Device extends EventEmitter {
       break;
     }
 
-    if (fn !== undefined) {
-      // pass with favorite levels because of slow updates
-      if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
-        console.info(String(new Date), 'updating', feature, 'to', ...args);
+    this.stats.power = await this.ref.power();
+    
+    if( this.stats.power == true ) {
+      if (fn !== undefined) {
+        // pass with favorite levels because of slow updates
+        if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
+          console.info(String(new Date), 'updating', feature, 'to', ...args);
+        }
+        await fn.bind(this)(...args);
       }
-      await fn.bind(this)(...args);
     }
   }
 
