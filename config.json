@@ -20,8 +20,8 @@
             }
     },
     "devices": {
-        "living_room": {
-            "ip": "192.168.0.222",
+        "sol_room": {
+            "ip": "192.168.0.101",
             "mode": "great"
         }
     }
