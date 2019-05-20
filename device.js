@@ -168,8 +168,8 @@ class Device extends EventEmitter {
   }
 
   async setPower(on) {
-    await this.ref.setPower(on);
-    this.stats.power = on;
+    //await this.ref.setPower(on);
+    //this.stats.power = on;
 
     return true;
   }
@@ -185,7 +185,15 @@ class Device extends EventEmitter {
     await this.ref.setMode(mode);
     this.stats.mode = mode;
     if (level !== null) {
+      
       this.stats.power = await this.ref.power();
+      await sleep(1000);
+      this.stats.power = await this.ref.power();
+      await sleep(1000);
+      this.stats.power = await this.ref.power();
+      await sleep(1000);
+      this.stats.power = await this.ref.power();
+      
       if( this.stats.power == true ) {
         await this.ref.setFavoriteLevel(level);
         this.stats.favoriteLevel = level;
