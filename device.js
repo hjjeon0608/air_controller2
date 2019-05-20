@@ -105,12 +105,12 @@ class Device extends EventEmitter {
           case 'humidity':
           case 'led':
 
-      	  this.stats.power = await this.ref.power();
-          await sleep(1000);
-          this.stats.power = await this.ref.power();
-          await sleep(1000);
-          this.stats.power = await this.ref.power();
-          await sleep(1000);
+      	  //this.stats.power = await this.ref.power();
+          //await sleep(1000);
+          //this.stats.power = await this.ref.power();
+          //await sleep(1000);
+          //this.stats.power = await this.ref.power();
+          //await sleep(1000);
           this.stats.power = await this.ref.power();
       	  if( this.stats.power == true ) {
             promises.push(update(feature));
@@ -185,12 +185,12 @@ class Device extends EventEmitter {
     
     if (level !== null) {
       
-      this.stats.power = await this.ref.power();
-      await sleep(1000);
-      this.stats.power = await this.ref.power();
-      await sleep(1000);
-      this.stats.power = await this.ref.power();
-      await sleep(1000);
+      //this.stats.power = await this.ref.power();
+      //await sleep(1000);
+      //this.stats.power = await this.ref.power();
+      //await sleep(1000);
+      //this.stats.power = await this.ref.power();
+      //await sleep(1000);
       this.stats.power = await this.ref.power();
       
       if( this.stats.power == true ) {
