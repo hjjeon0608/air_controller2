@@ -185,24 +185,17 @@ class Device extends EventEmitter {
     if( this.stats.power == true ) {
       await this.ref.setMode(mode);
       this.stats.mode = mode;
-    }
-    
-    if (level !== null) {
       
-      //this.stats.power = await this.ref.power();
-      //await sleep(1000);
-      //this.stats.power = await this.ref.power();
-      //await sleep(1000);
-      //this.stats.power = await this.ref.power();
-      //await sleep(1000);
-      this.stats.power = await this.ref.power();
-      
-      if( this.stats.power == true ) {
+      if (level !== null) {
+        //this.stats.power = await this.ref.power();
+        //await sleep(1000);
+        //this.stats.power = await this.ref.power();
+        //await sleep(1000);
+        //this.stats.power = await this.ref.power();
+        //await sleep(1000);
+        //this.stats.power = await this.ref.power();
         await this.ref.setFavoriteLevel(level);
         this.stats.favoriteLevel = level;
-      }
-      else {
-        return false;
       }
     }
 
