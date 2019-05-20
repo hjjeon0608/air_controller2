@@ -182,8 +182,7 @@ class Device extends EventEmitter {
       throw new Error(`level must be range from 1 to 16`);
     }
 
-    await this.ref.setMode(mode);
-    this.stats.mode = mode;
+    
     if (level !== null) {
       
       this.stats.power = await this.ref.power();
@@ -195,6 +194,9 @@ class Device extends EventEmitter {
       this.stats.power = await this.ref.power();
       
       if( this.stats.power == true ) {
+        await this.ref.setMode(mode);
+        this.stats.mode = mode;
+        
         await this.ref.setFavoriteLevel(level);
         this.stats.favoriteLevel = level;
       }
