@@ -134,31 +134,26 @@ class Device extends EventEmitter {
       }
     }
 
+    this.stats.power = await this.ref.power();
+    await sleep(1000);
+    this.stats.power = await this.ref.power();
+    await sleep(1000);
+    this.stats.power = await this.ref.power();
+    await sleep(1000);
+    this.stats.power = await this.ref.power();
+    await sleep(1000);
+    this.stats.power = await this.ref.power();
     // need to pass manually
     if (this.stats.power === false && feature !== 'power') {
       return false;
     }
 
     let fn;
-    switch(feature) {
-      case 'mode':
-      if (this.stats.mode === 'favorite' && args[0] === 'favorite' && args[1] === this.stats.favoriteLevel) {
-        return false;
-      }
-      fn = this.setMode;
-      break;
-
-      case 'power':
-      //fn = this.setPower;
-      break;
-
-      case 'led':
-      fn = this.setLED;
-      break;
-    }
-
+    fn = this.setMode;
+    console.info('bbbbb');
   
-    if (fn !== undefined) {
+    this.stats.power = await this.ref.power();
+    if (fn !== undefined && this.stats.power == true) {
       // pass with favorite levels because of slow updates
       if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
         console.info(String(new Date), 'updating', feature, 'to', ...args);
@@ -184,21 +179,16 @@ class Device extends EventEmitter {
 
     this.stats.power = await this.ref.power();
     if( this.stats.power == true ) {
-      await this.ref.setMode(mode);
-      this.stats.mode = mode;
-      
-      if (level !== null) {
-        //this.stats.power = await this.ref.power();
-        //await sleep(1000);
-        //this.stats.power = await this.ref.power();
-        //await sleep(1000);
-        //this.stats.power = await this.ref.power();
-        //await sleep(1000);
-        //this.stats.power = await this.ref.power();
-        await this.ref.setFavoriteLevel(level);
-        this.stats.favoriteLevel = level;
-      }
+    	await this.ref.setMode(mode);
+    	this.stats.mode = mode;
+    	  
+    	if (level !== null) {
+    	  await this.ref.setFavoriteLevel(level);
+    	  this.stats.favoriteLevel = level;
+    	}
     }
+    
+    console.info('aaaaa');
 
     return true;
   }
