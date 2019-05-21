@@ -145,9 +145,9 @@ class Device extends EventEmitter {
     this.stats.power = await this.ref.power();
     // need to pass manually
     //if (this.stats.power === false && feature !== 'power') {
-    //if (this.stats.power === false) {
-    //  return false;
-    //}
+    if (this.stats.power === false) {
+      return false;
+    }
 
     let fn;
     fn = this.setMode;
@@ -157,9 +157,10 @@ class Device extends EventEmitter {
     if( this.stats.power == true ) {
       if (fn !== undefined) {
         // pass with favorite levels because of slow updates
-        if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
-          console.info(String(new Date), 'updating', feature, 'to', ...args);
-        }
+        //if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
+        //if (args[0] === 'favorite') {
+        //  console.info(String(new Date), 'updating', feature, 'to', ...args);
+        //}
     	//console.info('ddd');
         await fn.bind(this)(...args);
       }   
