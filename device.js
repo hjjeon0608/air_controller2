@@ -144,23 +144,23 @@ class Device extends EventEmitter {
     //await sleep(1000);
     this.stats.power = await this.ref.power();
     // need to pass manually
-    if (this.stats.power === false && feature !== 'power') {
+    //if (this.stats.power === false && feature !== 'power') {
     //if (this.stats.power === false) {
-      return false;
-    }
+    //  return false;
+    //}
 
     let fn;
     fn = this.setMode;
-    //console.info('bbbbb');
+    console.info('bbbbb');
   
     this.stats.power = await this.ref.power();
     if( this.stats.power == true ) {
-      //if (fn !== undefined) {
-      if (fn == true) {
+      if (fn !== undefined) {
         // pass with favorite levels because of slow updates
         if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
           console.info(String(new Date), 'updating', feature, 'to', ...args);
         }
+    	console.info('ddd');
         await fn.bind(this)(...args);
       }   
     }
@@ -195,7 +195,7 @@ class Device extends EventEmitter {
       return false;
     }
     
-    //console.info('aaaaa');
+    console.info('aaaaa');
 
     return true;
   }
