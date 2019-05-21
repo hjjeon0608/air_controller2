@@ -151,7 +151,7 @@ class Device extends EventEmitter {
 
     let fn;
     fn = this.setMode;
-    console.info('bbbbb');
+    //console.info('bbbbb');
   
     this.stats.power = await this.ref.power();
     if( this.stats.power == true ) {
@@ -160,7 +160,7 @@ class Device extends EventEmitter {
         if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
           console.info(String(new Date), 'updating', feature, 'to', ...args);
         }
-    	console.info('ddd');
+    	//console.info('ddd');
         await fn.bind(this)(...args);
       }   
     }
@@ -195,7 +195,7 @@ class Device extends EventEmitter {
       return false;
     }
     
-    console.info('aaaaa');
+    //console.info('aaaaa');
 
     return true;
   }
