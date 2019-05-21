@@ -111,10 +111,10 @@ class Device extends EventEmitter {
           //await sleep(1000);
           //this.stats.power = await this.ref.power();
           //await sleep(1000);
-          //this.stats.power = await this.ref.power();
-      	  //if( this.stats.power == true ) {
+          this.stats.power = await this.ref.power();
+      	  if( this.stats.power == true ) {
             promises.push(update(feature));
-          //}
+          }
           break;
         }
       }
@@ -134,32 +134,36 @@ class Device extends EventEmitter {
       }
     }
 
-    this.stats.power = await this.ref.power();
-    await sleep(1000);
-    this.stats.power = await this.ref.power();
-    await sleep(1000);
-    this.stats.power = await this.ref.power();
-    await sleep(1000);
-    this.stats.power = await this.ref.power();
-    await sleep(1000);
+    //this.stats.power = await this.ref.power();
+    //await sleep(1000);
+    //this.stats.power = await this.ref.power();
+    //await sleep(1000);
+    //this.stats.power = await this.ref.power();
+    //await sleep(1000);
+    //this.stats.power = await this.ref.power();
+    //await sleep(1000);
     this.stats.power = await this.ref.power();
     // need to pass manually
     if (this.stats.power === false && feature !== 'power') {
+    //if (this.stats.power === false) {
       return false;
     }
 
     let fn;
     fn = this.setMode;
-    console.info('bbbbb');
+    //console.info('bbbbb');
   
     this.stats.power = await this.ref.power();
-    if (fn !== undefined && this.stats.power == true) {
-      // pass with favorite levels because of slow updates
-      if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
-        console.info(String(new Date), 'updating', feature, 'to', ...args);
-      }
-      await fn.bind(this)(...args);
-    }   
+    if( this.stats.power == true ) {
+      //if (fn !== undefined) {
+      if (fn == true) {
+        // pass with favorite levels because of slow updates
+        if (feature !== 'mode' || feature === 'mode' && args[0] === 'favorite' && this.stats.mode !== 'favorite') {
+          console.info(String(new Date), 'updating', feature, 'to', ...args);
+        }
+        await fn.bind(this)(...args);
+      }   
+    }
   }
 
   async setPower(on) {
@@ -187,8 +191,11 @@ class Device extends EventEmitter {
     	  this.stats.favoriteLevel = level;
     	}
     }
+    else {
+      return false;
+    }
     
-    console.info('aaaaa');
+    //console.info('aaaaa');
 
     return true;
   }
