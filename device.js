@@ -111,10 +111,10 @@ class Device extends EventEmitter {
           //await sleep(1000);
           //this.stats.power = await this.ref.power();
           //await sleep(1000);
-          this.stats.power = await this.ref.power();
-      	  if( this.stats.power == true ) {
+          //this.stats.power = await this.ref.power();
+      	  //if( this.stats.power == true ) {
             promises.push(update(feature));
-          }
+          //}
           break;
         }
       }
@@ -182,6 +182,7 @@ class Device extends EventEmitter {
       throw new Error(`level must be range from 1 to 16`);
     }
 
+    this.stats.power = await this.ref.power();
     if( this.stats.power == true ) {
       await this.ref.setMode(mode);
       this.stats.mode = mode;
