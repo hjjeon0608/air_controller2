@@ -73,19 +73,10 @@ class Device extends EventEmitter {
       this.polls.add('led');
     }
 
-    if (this.isPolling === false) {
-      // power = default
-      //this.ref.on('power', power => {
-      //  this.stats.power = power;
-      //});
-      //this.stats.power = await this.ref.power();
-      //if( this.stats.power == on ) {
-      //this.poll().then();
-      //}
+    if (this.isPolling === false) {     
       this.poll().then();//처음 실행시 한번 실행 시키기 위한 if문 안에 있는 것으로 보임
     }
     
-
     return true;
   }
 
@@ -171,8 +162,8 @@ class Device extends EventEmitter {
   }
 
   async setLED(enabled) {
-    await this.ref.led(enabled);
-    this.stats.led = enabled;
+    //await this.ref.led(enabled);
+    //this.stats.led = enabled;
 
     return true;
   }
