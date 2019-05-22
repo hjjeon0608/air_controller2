@@ -120,7 +120,7 @@ class Device extends EventEmitter {
       }
 
       await Promise.all(promises);
-      console.info(String(new Date), `POWER [${this.stats.power}] LED [${this.stats.led}] PM2.5 [${this.stats.aqi}] MODE [${this.stats.mode}]`);
+      console.info(String(new Date), `POWER [${this.stats.power}] PM2.5 [${this.stats.aqi}] MODE [${this.stats.mode}]`);
       await sleep(this.pollingInterval);
     }
   }
