@@ -5,7 +5,8 @@ const { EventEmitter } = require('events');
 class Device extends EventEmitter {
 
   static get FEATURES() {
-    return ['mode', 'power', 'led', 'aqi', 'temperature', 'humidity'];
+    //return ['mode', 'power', 'led', 'aqi', 'temperature', 'humidity'];
+    return ['mode', 'power', 'led', 'aqi', 'temperature'];
   }
 
   static get CHANGABLES() {
@@ -24,7 +25,8 @@ class Device extends EventEmitter {
     this.pollingInterval = 1000;
     this.isPolling = false;
 
-    this.stats = { mode: null, favoriteLevel: null, power: null, led: null, aqi: null, temperature: null, humidity: null };
+    //this.stats = { mode: null, favoriteLevel: null, power: null, led: null, aqi: null, temperature: null, humidity: null };
+    this.stats = { mode: null, favoriteLevel: null, power: null, led: null, aqi: null, temperature: null };
   }
 
   setParentMode(mode) {
@@ -65,9 +67,9 @@ class Device extends EventEmitter {
     if (features.includes('temperature')) {
       this.polls.add('temperature');
     }
-    if (features.includes('humidity')) {
-      this.polls.add('humidity');
-    }
+    //if (features.includes('humidity')) {
+    //  this.polls.add('humidity');
+    //}
     
     if (features.includes('led')) {
       this.polls.add('led');
