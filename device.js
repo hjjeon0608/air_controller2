@@ -160,12 +160,12 @@ class Device extends EventEmitter {
   }
 
   async setMode(mode = 'auto', level = null) {
-    if (!['auto', 'silent', 'favorite'].includes(mode)) {
-      throw new Error(`mode ${mode} is not supported`);
-    }
-    if (level !== null && (level < 0 || level > 16)) {
-      throw new Error(`level must be range from 1 to 16`);
-    }
+    //if (!['auto', 'silent', 'favorite'].includes(mode)) {
+    //  throw new Error(`mode ${mode} is not supported`);
+    //}
+    //if (level !== null && (level < 0 || level > 16)) {
+    //  throw new Error(`level must be range from 1 to 16`);
+    //}
 
     this.stats.power = await this.ref.power();
     if( this.stats.power == true ) {
