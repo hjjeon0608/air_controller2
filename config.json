@@ -10,12 +10,11 @@
                     "default": "auto",
                     "conditions": [
                         { "action": ["auto"], "aqi": "< 5" },
-                        { "action": ["favorite", 1], "aqi": ">= 5" },
-                        { "action": ["favorite", 3], "aqi": ">= 9" },
-                        { "action": ["favorite", 6], "aqi": ">= 13" },
-                        { "action": ["favorite", 9], "aqi": ">= 17" },
-                        { "action": ["favorite", 12], "aqi": ">= 21" },
-                        { "action": ["favorite", 14], "aqi": ">= 25" }
+                        { "action": ["favorite", 2], "aqi": ">= 5" },
+                        { "action": ["favorite", 5], "aqi": ">= 9" },
+                        { "action": ["favorite", 8], "aqi": ">= 13" },
+                        { "action": ["favorite", 11], "aqi": ">= 17" },
+                        { "action": ["favorite", 14], "aqi": ">= 21" }
                     ]
                 }
             }
