@@ -5,11 +5,12 @@ const { EventEmitter } = require('events');
 class Device extends EventEmitter {
 
   static get FEATURES() {
-    return ['mode', 'power', 'led', 'aqi', 'temperature', 'humidity'];
+    //return ['mode', 'power', 'led', 'aqi', 'temperature', 'humidity'];
+    return ['mode', 'power', 'aqi'];
   }
 
   static get CHANGABLES() {
-    return ['mode', 'power', 'led'];
+    return ['mode', 'power'];
   }
 
   constructor(name, ip, mode) {
@@ -24,7 +25,8 @@ class Device extends EventEmitter {
     this.pollingInterval = 1000;
     this.isPolling = false;
 
-    this.stats = { mode: null, favoriteLevel: null, power: null, led: null, aqi: null, temperature: null, humidity: null };
+    //this.stats = { mode: null, favoriteLevel: null, power: null, led: null, aqi: null, temperature: null, humidity: null };
+    this.stats = { mode: null, favoriteLevel: null, power: null, aqi: null };
   }
 
   setParentMode(mode) {
@@ -62,30 +64,21 @@ class Device extends EventEmitter {
       // -> the same issue applies to the others
       this.polls.add('aqi');
     }
-    if (features.includes('temperature')) {
-      this.polls.add('temperature');
-    }
-    if (features.includes('humidity')) {
-      this.polls.add('humidity');
-    }
+    //if (features.includes('temperature')) {
+    //  this.polls.add('temperature');
+    //}
+    //if (features.includes('humidity')) {
+    //  this.polls.add('humidity');
+    //}
     
-    if (features.includes('led')) {
-      this.polls.add('led');
-    }
+    //if (features.includes('led')) {
+    //  this.polls.add('led');
+    //}
 
-    if (this.isPolling === false) {
-      // power = default
-      //this.ref.on('power', power => {
-      //  this.stats.power = power;
-      //});
-      //this.stats.power = await this.ref.power();
-      //if( this.stats.power == on ) {
-      //this.poll().then();
-      //}
+    if (this.isPolling === false) {     
       this.poll().then();//처음 실행시 한번 실행 시키기 위한 if문 안에 있는 것으로 보임
     }
     
-
     return true;
   }
 
@@ -96,58 +89,27 @@ class Device extends EventEmitter {
       this.isPolling = true;
 
       const promises = [];
-      for (const feature of this.polls) {
-        switch(feature) {
-          case 'aqi':
-          case 'mode':
-          case 'favoriteLevel':
-          case 'temperature':
-          case 'humidity':
-          case 'led':
-
-      	  //this.stats.power = await this.ref.power();
-          //await sleep(1000);
-          //this.stats.power = await this.ref.power();
-          //await sleep(1000);
-          //this.stats.power = await this.ref.power();
-          //await sleep(1000);
+      for( const feature of this.polls) { 
           this.stats.power = await this.ref.power();
       	  if( this.stats.power == true ) {
             promises.push(update(feature));
           }
-          break;
-        }
-      }
+      } 
 
       await Promise.all(promises);
-      console.info(String(new Date), `POWER [${this.stats.power}] LED [${this.stats.led}] PM2.5 [${this.stats.aqi}] MODE [${this.stats.mode}]`);
+      console.info(String(new Date), `POWER [${this.stats.power}] PM2.5 [${this.stats.aqi}] MODE [${this.stats.mode}]`);
       await sleep(this.pollingInterval);
     }
   }
 
   async update(feature, ...args) {
-    if (this.stats[feature] === null) {
-      return false;
-    } else if (args.length === 1) {
-      if (this.stats[feature] === args[0]) {
-        return false;
-      }
-    }
-
-    //this.stats.power = await this.ref.power();
-    //await sleep(1000);
-    //this.stats.power = await this.ref.power();
-    //await sleep(1000);
-    //this.stats.power = await this.ref.power();
-    //await sleep(1000);
-    //this.stats.power = await this.ref.power();
-    //await sleep(1000);
-    this.stats.power = await this.ref.power();
-    // need to pass manually
-    //if (this.stats.power === false && feature !== 'power') {
-    if (this.stats.power === false) {
-      return false;
-    }
+    //if (this.stats[feature] === null) {
+    //  return false;
+    //} else if (args.length === 1) {
+    //  if (this.stats[feature] === args[0]) {
+    //    return false;
+    //  }
+    //}
 
     let fn;
     fn = this.setMode;
@@ -175,12 +137,12 @@ class Device extends EventEmitter {
   }
 
   async setMode(mode = 'auto', level = null) {
-    if (!['auto', 'silent', 'favorite'].includes(mode)) {
-      throw new Error(`mode ${mode} is not supported`);
-    }
-    if (level !== null && (level < 0 || level > 16)) {
-      throw new Error(`level must be range from 1 to 16`);
-    }
+    //if (!['auto', 'silent', 'favorite'].includes(mode)) {
+    //  throw new Error(`mode ${mode} is not supported`);
+    //}
+    //if (level !== null && (level < 0 || level > 16)) {
+    //  throw new Error(`level must be range from 1 to 16`);
+    //}
 
     this.stats.power = await this.ref.power();
     if( this.stats.power == true ) {
@@ -202,8 +164,8 @@ class Device extends EventEmitter {
   }
 
   async setLED(enabled) {
-    await this.ref.led(enabled);
-    this.stats.led = enabled;
+    //await this.ref.led(enabled);
+    //this.stats.led = enabled;
 
     return true;
   }
