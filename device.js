@@ -6,11 +6,11 @@ class Device extends EventEmitter {
 
   static get FEATURES() {
     //return ['mode', 'power', 'led', 'aqi', 'temperature', 'humidity'];
-    return ['mode', 'power', 'led', 'aqi', 'temperature'];
+    return ['mode', 'power', 'aqi'];
   }
 
   static get CHANGABLES() {
-    return ['mode', 'power', 'led'];
+    return ['mode', 'power'];
   }
 
   constructor(name, ip, mode) {
@@ -26,7 +26,7 @@ class Device extends EventEmitter {
     this.isPolling = false;
 
     //this.stats = { mode: null, favoriteLevel: null, power: null, led: null, aqi: null, temperature: null, humidity: null };
-    this.stats = { mode: null, favoriteLevel: null, power: null, led: null, aqi: null, temperature: null };
+    this.stats = { mode: null, favoriteLevel: null, power: null, aqi: null };
   }
 
   setParentMode(mode) {
@@ -64,16 +64,16 @@ class Device extends EventEmitter {
       // -> the same issue applies to the others
       this.polls.add('aqi');
     }
-    if (features.includes('temperature')) {
-      this.polls.add('temperature');
-    }
+    //if (features.includes('temperature')) {
+    //  this.polls.add('temperature');
+    //}
     //if (features.includes('humidity')) {
     //  this.polls.add('humidity');
     //}
     
-    if (features.includes('led')) {
-      this.polls.add('led');
-    }
+    //if (features.includes('led')) {
+    //  this.polls.add('led');
+    //}
 
     if (this.isPolling === false) {     
       this.poll().then();//처음 실행시 한번 실행 시키기 위한 if문 안에 있는 것으로 보임
