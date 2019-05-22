@@ -96,28 +96,12 @@ class Device extends EventEmitter {
       this.isPolling = true;
 
       const promises = [];
-      for (const feature of this.polls) {
-        switch(feature) {
-          case 'aqi':
-          case 'mode':
-          case 'favoriteLevel':
-          case 'temperature':
-          case 'humidity':
-          case 'led':
-
-      	  //this.stats.power = await this.ref.power();
-          //await sleep(1000);
-          //this.stats.power = await this.ref.power();
-          //await sleep(1000);
-          //this.stats.power = await this.ref.power();
-          //await sleep(1000);
+      for( const feature of this.polls) { 
           this.stats.power = await this.ref.power();
       	  if( this.stats.power == true ) {
             promises.push(update(feature));
           }
-          break;
-        }
-      }
+      } 
 
       await Promise.all(promises);
       console.info(String(new Date), `POWER [${this.stats.power}] PM2.5 [${this.stats.aqi}] MODE [${this.stats.mode}]`);
