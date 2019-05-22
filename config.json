@@ -1,7 +1,7 @@
 {
     "modes": {
         "great": {
-                "interval": 10000,
+                "interval": 15000,
                 "power": {                   
                 },
                 "led": {                   
