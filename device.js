@@ -134,21 +134,6 @@ class Device extends EventEmitter {
       }
     }
 
-    //this.stats.power = await this.ref.power();
-    //await sleep(1000);
-    //this.stats.power = await this.ref.power();
-    //await sleep(1000);
-    //this.stats.power = await this.ref.power();
-    //await sleep(1000);
-    //this.stats.power = await this.ref.power();
-    //await sleep(1000);
-    this.stats.power = await this.ref.power();
-    // need to pass manually
-    //if (this.stats.power === false && feature !== 'power') {
-    if (this.stats.power === false) {
-      return false;
-    }
-
     let fn;
     fn = this.setMode;
     //console.info('bbbbb');
