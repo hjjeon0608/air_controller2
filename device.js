@@ -103,13 +103,13 @@ class Device extends EventEmitter {
   }
 
   async update(feature, ...args) {
-    if (this.stats[feature] === null) {
-      return false;
-    } else if (args.length === 1) {
-      if (this.stats[feature] === args[0]) {
-        return false;
-      }
-    }
+    //if (this.stats[feature] === null) {
+    //  return false;
+    //} else if (args.length === 1) {
+    //  if (this.stats[feature] === args[0]) {
+    //    return false;
+    //  }
+    //}
 
     let fn;
     fn = this.setMode;
