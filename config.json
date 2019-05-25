@@ -15,7 +15,7 @@
                         { "action": ["favorite", 8], "aqi": ">= 12" },
                         { "action": ["favorite", 11], "aqi": ">= 16" },
                         { "action": ["favorite", 14], "aqi": ">= 20" }
-                    ]
+                   ]
                 }
             }
     },
