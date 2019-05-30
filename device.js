@@ -90,7 +90,7 @@ class Device extends EventEmitter {
 
       const promises = [];
       for( const feature of this.polls) { 
-          await sleep(3000);
+          await sleep(5000);
           this.stats.power = await this.ref.power();
       	  if( this.stats.power == true ) {
             //promises.push(update(feature));
@@ -117,7 +117,7 @@ class Device extends EventEmitter {
     fn = this.setMode;
     //console.info('bbbbb');
   
-    await sleep(3000);
+    await sleep(5000);
     this.stats.power = await this.ref.power();
     if( this.stats.power == true ) {
       if (fn !== undefined) {
@@ -147,7 +147,7 @@ class Device extends EventEmitter {
     //  throw new Error(`level must be range from 1 to 16`);
     //}
     
-    await sleep(3000);
+    await sleep(5000);
     this.stats.power = await this.ref.power();
     
     if( this.stats.power == true ) {
