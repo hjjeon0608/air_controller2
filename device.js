@@ -117,6 +117,11 @@ class Device extends EventEmitter {
     if (this.stats.mode === 'favorite' && args[0] === 'favorite' && args[1] === this.stats.favoriteLevel) {
       return false;
     }
+    
+    //현재 모드가 auto 인데 변경 사항도 auto 일 경우 끝내는 구문 추가
+    if (this.stats.mode == 'auto' && args[0] !== 'auto' ) {
+      return false;
+    }
 
     let fn;
     fn = this.setMode;
