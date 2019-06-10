@@ -112,6 +112,11 @@ class Device extends EventEmitter {
         return false;
       }
     }
+    
+    //만약 favorite mode에서 level 변경이 없을 경우 걍 끝내는 것으로 보임
+    if (this.stats.mode === 'favorite' && args[0] === 'favorite' && args[1] === this.stats.favoriteLevel) {
+      return false;
+    }
 
     let fn;
     fn = this.setMode;
