@@ -90,7 +90,7 @@ class Device extends EventEmitter {
 
       const promises = [];
       for( const feature of this.polls) { 
-          await sleep(10000);
+          await sleep(20000);
           this.stats.power = await this.ref.power();
       	  if( this.stats.power == true ) {
             //promises.push(update(feature));
@@ -111,6 +111,16 @@ class Device extends EventEmitter {
       if (this.stats[feature] === args[0]) {
         return false;
       }
+    }
+    
+    //만약 favorite mode에서 level 변경이 없을 경우 걍 끝내는 것으로 보임
+    if (this.stats.mode === 'favorite' && args[0] === 'favorite' && args[1] === this.stats.favoriteLevel) {
+      return false;
+    }
+    
+    //현재 모드가 auto 인데 변경 사항도 auto 일 경우 끝내는 구문 추가
+    if (this.stats.mode == 'auto' && args[0] !== 'auto' ) {
+      return false;
     }
 
     let fn;
