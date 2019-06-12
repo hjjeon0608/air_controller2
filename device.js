@@ -119,7 +119,7 @@ class Device extends EventEmitter {
     }
     
     //현재 모드가 auto 인데 변경 사항도 auto 일 경우 끝내는 구문 추가
-    if (this.stats.mode == 'auto' && args[0] !== 'auto' ) {
+    if (this.stats.mode === 'auto' && args[0] === 'auto' ) {
       return false;
     }
 
