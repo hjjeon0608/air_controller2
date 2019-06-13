@@ -24,6 +24,10 @@
         "living_room": {
             "ip": "192.168.0.222",
             "mode": "great"
+        },
+        bed_room": {
+            "ip": "192.168.0.51",
+            "mode": "great"
         }
     }
 }
