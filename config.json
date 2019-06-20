@@ -9,7 +9,25 @@
                 "mode": {
                     "default": "auto",
                     "conditions": [
-                        { "action": ["auto"], "aqi": "< 4" },
+                        { "action": ["auto"], "aqi": "< 4" },                     
+                        { "action": ["favorite", 3], "aqi": ">= 4" },
+                        { "action": ["favorite", 6], "aqi": ">= 8" },
+                        { "action": ["favorite", 9], "aqi": ">= 12" },
+                        { "action": ["favorite", 12], "aqi": ">= 16" },
+                        { "action": ["favorite", 14], "aqi": ">= 20" },
+                        { "action": ["favorite", 16], "aqi": ">= 24" }
+                    ]
+                },
+            "sleep": {
+                "interval": 10000,
+                "power": {                   
+                },
+                "led": {                   
+                },
+                "mode": {
+                    "default": "auto",
+                    "conditions": [
+                        { "action": "favorite", 1], "aqi": "< 4" },                     
                         { "action": ["favorite", 3], "aqi": ">= 4" },
                         { "action": ["favorite", 6], "aqi": ">= 8" },
                         { "action": ["favorite", 9], "aqi": ">= 12" },
@@ -27,7 +45,7 @@
         },
         "bed_room": {
             "ip": "192.168.0.51",
-            "mode": "great"
+            "mode": "sleep"
         }
     }
 }
