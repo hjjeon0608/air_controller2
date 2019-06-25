@@ -90,7 +90,7 @@ class Device extends EventEmitter {
 
       const promises = [];
       for( const feature of this.polls) { 
-          await sleep(20000);
+          await sleep(10000);
           this.stats.power = await this.ref.power();
       	  if( this.stats.power == true ) {
             //promises.push(update(feature));
