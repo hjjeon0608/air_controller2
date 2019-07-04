@@ -19,7 +19,7 @@
                 ]
             }
 	},
-	"great": {
+	"sleep": {
             "interval": 10000,
             "power": {                   
             },
@@ -45,7 +45,7 @@
             "mode": "great"
         },
         "bed_room": {
-            "ip": "192.168.0.51",
+            "ip": "192.168.0.50",
             "mode": "sleep"
         }
     }
