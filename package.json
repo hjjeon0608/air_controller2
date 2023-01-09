@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/ssut/make-mi-air-purifier-great-again#readme",
   "dependencies": {
-    "luxon": "^1.0.0",
+    "luxon": "^2.5.2",
     "miio": "^0.15.6",
     "sleep-promise": "^2.0.0"
   },
