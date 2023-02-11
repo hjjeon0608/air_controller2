@@ -7,10 +7,10 @@
     "test": "mocha"
   },
   "bin": {
-      "pkg": "index.js"
+    "pkg": "index.js"
   },
   "pkg": {
-      "scripts": "config.json"
+    "scripts": "config.json"
   },
   "repository": {
     "type": "git",
