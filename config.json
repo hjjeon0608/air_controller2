@@ -9,10 +9,10 @@
                 "mode": {
                     "default": "auto",
                     "conditions": [
-                        { "action": ["favorite", 2], "aqi": "< 3" },
-                        { "action": ["favorite", 5], "aqi": ">= 3" },
-                        { "action": ["favorite", 8], "aqi": ">= 7" },
-                        { "action": ["favorite", 11], "aqi": ">= 11" },
+                        { "action": ["favorite", 1], "aqi": "< 3" },
+                        { "action": ["favorite", 4], "aqi": ">= 3" },
+                        { "action": ["favorite", 7], "aqi": ">= 7" },
+                        { "action": ["favorite", 10], "aqi": ">= 11" },
                         { "action": ["favorite", 14], "aqi": ">= 15" }
                     ]
                 }
